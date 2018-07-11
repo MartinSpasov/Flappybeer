@@ -17,6 +17,11 @@ namespace BeerEngine {
 		sprite.setPosition(_data->window.getSize().x, -_pipeSpawnYOffset);
 		pipeSprites.push_back(sprite);
 	}
+	void Pipe::SpawnScorePipe(){
+		sf::Sprite sprite(_data->assets.GetTexture("Scoring Pipe"));
+		sprite.setPosition(_data->window.getSize().x, 0);
+		scoringPipes.push_back(sprite);
+	}
 	void Pipe::SpawnInvisiblePipe() {
 		sf::Sprite sprite(_data->assets.GetTexture("Pipe Up"));
 		sprite.setPosition(_data->window.getSize().x, _data->window.getSize().y - sprite.getGlobalBounds().height);
@@ -31,6 +36,11 @@ namespace BeerEngine {
 
 			float movement = PIPE_MOVEMENT_SPEED * dt;
 			pipeSprites.at(i).move(-movement, 0);
+		}
+
+		for (unsigned short int i = 0; i < scoringPipes.size(); i++) {
+			float movement = PIPE_MOVEMENT_SPEED * dt;
+			scoringPipes.at(i).move(-movement, 0);
 		}
 	}
 
@@ -47,6 +57,11 @@ namespace BeerEngine {
 	const std::vector<sf::Sprite>& Pipe::getSprites() const
 	{
 		return pipeSprites;
+	}
+
+	std::vector<sf::Sprite>& Pipe::getScoreSprites()
+	{
+		return scoringPipes;
 	}
 
 

@@ -11,6 +11,8 @@
 #define FLYING_SPEED 450.0f
 #define FLYING_DURATION 0.25f
 #define ROTATION_SPEED 200.0f
+#define FLASH_SPEED 1500.0f
+#define TIME_BEFORE_GO 1.5f
 
 #define LAND_FILEPATH "Resources/res/Land.png"
 #define SPLASH_SCREEN_BACKGROUND_PATH "Resources/res/Splash Background.png"
@@ -25,8 +27,15 @@
 #define PIPE_UP_FILEPATH "Resources/res/PipeUp.png"
 #define PIPE_DOWN_FILEPATH "Resources/res/PipeDown.png"
 
+#define SCORING_PIPRE_FILEPATH "Resources/res/InvisibleScoringPipe.png"
+
 #define GAME_TITLE_FILEPATH "Resources/res/title.png"
 #define PLAY_BUTTON_FILEPATH "Resources/res/PlayButton.png"
+
+#define FLAPPY_FONT "Resources/fonts/FlappyFont.ttf"
+#define GAME_OVER_FILEPATH "Resources/res/Game-Over-Title.png"
+#define GAME_OVER__BODY_FILEPATH "Resources/res/Game-Over-Body.png"
+#define HIGHSCORE_FILEPATH "Resources/highscore.txt"
 
 enum GameStates {
 	eReady,

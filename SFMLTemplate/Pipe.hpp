@@ -12,14 +12,17 @@ namespace BeerEngine {
 		void DrawPipes();
 		void SpawnBottomPipe();
 		void SpawnTopPipe();
+		void SpawnScorePipe();
 		void SpawnInvisiblePipe();
 		void MovePipes(float dt);
 		void RandomizeOffset();
 
 		const std::vector<sf::Sprite> &getSprites() const;
+		std::vector<sf::Sprite> &getScoreSprites() ;
 	private:
 		GameDataRef _data;
 		std::vector<sf::Sprite> pipeSprites;
+		std::vector<sf::Sprite> scoringPipes;
 
 		int _landHeight;
 		int _pipeSpawnYOffset;

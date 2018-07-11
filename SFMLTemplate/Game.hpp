@@ -6,12 +6,20 @@
 #include "AssetManager.hpp"
 #include "InputManager.hpp"
 
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "SerialPort.h"
+
+
 namespace BeerEngine {
 	struct GameData {
 		StateMachine machine;
 		sf::RenderWindow window;
 		AssetManager assets;
 		InputManager input;
+		SerialPort arduino;
 	};
 
 	typedef std::shared_ptr<GameData> GameDataRef;

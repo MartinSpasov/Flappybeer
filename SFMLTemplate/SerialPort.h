@@ -21,8 +21,10 @@ public:
 	~SerialPort();
 
 	int readSerialPort(char *buffer, unsigned int buf_size);
-	bool writeSerialPort(char *buffer, unsigned int buf_size);
+	bool writeSerialPort(const char *buffer, unsigned int buf_size);
 	bool isConnected();
 };
+
+void pushSerial(const char *buffer, unsigned int buf_size, SerialPort* arduino);
 
 #endif // SERIALPORT_H

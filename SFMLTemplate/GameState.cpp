@@ -4,7 +4,7 @@
 #include <iostream>
 #include "GameOverState.hpp"
 #include "SerialPort.h"
-
+#include <thread>
 
 namespace BeerEngine {
 	GameState::GameState(GameDataRef data) : _data(data) {}
@@ -46,7 +46,7 @@ namespace BeerEngine {
 		if (_data->input.IsSpriteClicked(_background, sf::Mouse::Left, _data->window)) {
 			if (_gameState != GameStates::eGameover) {
 				_gameState = GameStates::ePlaying;
-				_data->arduino.writeSerialPort("ON", MAX_DATA_LENGTH);
+				
 				bird->Flap();
 			}
 		}
@@ -91,6 +91,12 @@ namespace BeerEngine {
 						_score++;
 						hud->UpdateScore(_score);
 						scoreSprites.erase(scoreSprites.begin() + i);
+						
+						//std::async(std::launch::async ,pushSerial, "ON", MAX_DATA_LENGTH, &_data->arduino);
+						std::thread t(pushSerial, "ON", MAX_DATA_LENGTH, &_data->arduino);
+						t.detach();
+						//_data->arduino.writeSerialPort("ON", MAX_DATA_LENGTH);
+						
 					}
 				}
 			}

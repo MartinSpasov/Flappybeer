@@ -76,7 +76,7 @@ int SerialPort::readSerialPort(char *buffer, unsigned int buf_size)
 	return 0;
 }
 
-bool SerialPort::writeSerialPort(char *buffer, unsigned int buf_size)
+bool SerialPort::writeSerialPort(const char *buffer, unsigned int buf_size)
 {
 	DWORD bytesSend;
 	if (!WriteFile(this->handler, (void*)buffer, buf_size, &bytesSend, 0)) {
@@ -89,4 +89,8 @@ bool SerialPort::writeSerialPort(char *buffer, unsigned int buf_size)
 bool SerialPort::isConnected()
 {
 	return this->connected;
+}
+
+void pushSerial(const char *buffer, unsigned int buf_size, SerialPort* arduino) {
+	arduino->writeSerialPort(buffer, buf_size);
 }
